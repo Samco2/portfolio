@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import django_heroku
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-9^4nchv*(e_4h$iv%cgki83ch745tf1(78u*mh(0(9)jshz2cf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['gemcrystalcf.herokuapp.com']
 
 
 # Application definition
@@ -77,11 +78,11 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'new_portfoliodb',
-        'USER': 'postgres',
-        'PASSWORD': 'Isakunle1',
-        'HOST':'localhost',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'da985jqjivs838',
+        'USER': 'jrpxlyhknquzrl',
+        'PASSWORD': '236ade59821eb6d2ab3a3a3d0e10a9e7f56e14c773a21fc718c94f2fbd0ff864',
+        'HOST':'ec2-44-193-178-122.compute-1.amazonaws.com',
         'PORT': 5432,
     }
 }
@@ -115,6 +116,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_LION = True
+
 USE_TZ = True
 
 
@@ -124,8 +127,9 @@ STATICFILES_DIRS =[
     BASE_DIR / 'portfolio/static/'
 ]
 
-STATIC_ROOT = BASE_DIR / 'static'
-STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = "/static/"
+django_heroku.settings(locals())
 
 
 MEDIA_ROOT = BASE_DIR / 'media'
